@@ -4,5 +4,7 @@
 			"path": "/Library/WebServer/Documents/local_projects/react-redux-course/video-streaming"
 		}
     ],
-    "settings": {}
+    "settings": {
+        "editor.tabSize": 2
+    }
 }
