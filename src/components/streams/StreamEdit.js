@@ -1,24 +1,32 @@
+import _ from 'lodash';
 import React from "react";
 import { connect } from "react-redux";
-import _ from 'lodash';
 
+import StreamForm from './StreamForm';
 import { editStream, fetchStream } from "../../actions";
 
 class StreamEdit extends React.Component {
 
   componentDidMount() {
-    // console.log('123', Object.keys(this.props.stream));
     if (_.isEmpty(this.props.stream)) {
       this.props.fetchStream(this.props.match.params.id);
     }
   }
+
+  onSubmit = data => this.props.editStream(this.props.stream.id, data);
   
   render() {
-    console.log('rendered');
     if (_.isEmpty(this.props.stream)){
       return <div>Loading...</div>;
     } else {
-      return <div>{this.props.stream.title}</div>;
+      let valuesToEdit = _.pick(this.props.stream, 'title', 'description');
+      console.log(valuesToEdit);
+      return (
+        <div>
+          <h3>Edit Stream</h3>
+          <StreamForm onSubmit={this.onSubmit} initialValues={valuesToEdit} />
+        </div>
+      )
     }
   }
 }

@@ -36,8 +36,9 @@ export const fetchStream = (streamId) => async (dispatch) => {
 }
 
 export const editStream = (streamId, data) => async (dispatch) => {
-  const streamResponse = await streamAPI.put(`/streams/${streamId}`, data);
+  const streamResponse = await streamAPI.patch(`/streams/${streamId}`, data);
   dispatch({ type: EDIT_STREAM, payload: streamResponse.data });
+  history.push('/');
 }
 
 export const deleteStream = (streamId) => async (dispatch) => {
