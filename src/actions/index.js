@@ -26,6 +26,11 @@ export const fetchStreams = () => async (dispatch, getState) => {
 }
 
 export const fetchStream = (streamId) => async (dispatch) => {
+  // const streamResponse = await new Promise(resolve => {
+  //   setTimeout(() => {
+  //     resolve(streamAPI.get(`/streams/${streamId}`));
+  //   }, 4000)
+  // });
   const streamResponse = await streamAPI.get(`/streams/${streamId}`);
   dispatch({ type: FETCH_STREAM, payload:streamResponse.data });
 }
