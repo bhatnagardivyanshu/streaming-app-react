@@ -20,7 +20,6 @@ class StreamEdit extends React.Component {
       return <div>Loading...</div>;
     } else {
       let valuesToEdit = _.pick(this.props.stream, 'title', 'description');
-      console.log(valuesToEdit);
       return (
         <div>
           <h3>Edit Stream</h3>
