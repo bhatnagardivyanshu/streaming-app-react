@@ -11,8 +11,8 @@ class StreamList extends React.Component {
   renderCreateStreamButton = () => {
     if (this.props.isSignedIn) {
       let styleObj = {
-        textAlign: this.props.streams.length ? 'right' : 'center'
-      }
+        textAlign: this.props.streams.length ? "right" : "center"
+      };
       return (
         <div className="right floated content" style={styleObj}>
           <Link to="/streams/create" className="ui button primary">
@@ -27,9 +27,13 @@ class StreamList extends React.Component {
     const currentUserId = this.props.currentUserId;
     if (currentUserId && ownerId === currentUserId) {
       return (
-        <div className="right floated content" >
-          <Link to={`/streams/edit/${id}`} className="ui button primary">Edit</Link>
-          <Link to={`/streams/delete/${id}`} className="ui button negative">Delete</Link>
+        <div className="right floated content">
+          <Link to={`/streams/edit/${id}`} className="ui button primary">
+            Edit
+          </Link>
+          <Link to={`/streams/delete/${id}`} className="ui button negative">
+            Delete
+          </Link>
         </div>
       );
     }
@@ -41,7 +45,7 @@ class StreamList extends React.Component {
         {this.renderActionButtons(stream)}
         <i className="large middle aligned icon camera" />
         <div className="content">
-          {stream.title}
+          <Link to={`/streams/${stream.id}`} className="header" >{stream.title}</Link>
           <div className="description">{stream.description}</div>
         </div>
       </div>
