@@ -1,0 +1,25 @@
+We are using RTMP and OBS to render videos here
+RTMP stands for Real Time Messaging Protocol
+OBS stands for Open Broadcaster System
+We have a RTMP server running (node js) which recieves data/video from OBS
+We make a call from React App to our RTMP server which is receiving the live stream from OBS and renders it
+
+// RTMP Server
+const NodeMediaServer = require('node-media-server');
+ 
+const config = {
+  rtmp: {
+    port: 1935,
+    chunk_size: 60000,
+    gop_cache: true,
+    ping: 30,
+    ping_timeout: 60
+  },
+  http: {
+    port: 8000,
+    allow_origin: '*'
+  }
+};
+ 
+var nms = new NodeMediaServer(config)
+nms.run();
